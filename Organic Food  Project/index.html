@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: #333;
+        }
+
+        .slider-container {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
+        img {
+            width: 100%;
+
+            height: 600px;
+        }
+
+        /* Navigation Style */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #fff;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Organic Food Shopping Web Application</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="admin/login.html">Admin</a>
+        <a href="login.html">User</a>
+    </nav>
+
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide">
+                <img src="admin/uploads/Food2.jpg" alt="Slide 1">
+            </div>
+            <div class="slide">
+                <img src="admin/uploads/Food1.jpg" alt="Slide 2">
+            </div>
+            <!-- <div class="slide">
+                <img src="image3.jpg" alt="Slide 3">
+            </div> -->
+            <!-- Add more slides as needed -->
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <button class="nav-btn prev" onclick="prevSlide()">❮</button>
+    <button class="nav-btn next" onclick="nextSlide()">❯</button>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = document.querySelectorAll('.slide').length;
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+        function updateSlider() {
+            const slider = document.querySelector('.slider');
+            const slideWidth = document.querySelector('.slide').clientWidth;
+            slider.style.transform = `translateX(${-currentSlide * slideWidth}px)`;
+        }
+    </script>
+</body>
+
+</html>
